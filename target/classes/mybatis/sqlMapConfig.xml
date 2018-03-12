@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置vo文件-->
+    <typeAliases>
+        <typeAlias type="com.qu.vo.UserVo" alias="User"/>
+    </typeAliases>
+
+    <!--配置sql文件-->
+    <mappers>
+        <mapper resource="/mybatis/adminMapper.xml"/>
+    </mappers>
+
+</configuration>
