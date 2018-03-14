@@ -5,6 +5,7 @@
     <!--配置vo文件-->
     <typeAliases>
         <typeAlias type="com.qu.vo.UserVo" alias="User"/>
+        <typeAlias type="com.qu.vo.UserAnswerVo" alias="UserAnswerVo"/>
     </typeAliases>
 
     <!--配置sql文件-->

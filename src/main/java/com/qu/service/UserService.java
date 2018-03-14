@@ -1,5 +1,6 @@
 package com.qu.service;
 
+import com.qu.vo.UserAnswerVo;
 import com.qu.vo.UserVo;
 import org.springframework.stereotype.Service;
 
@@ -10,4 +11,8 @@ import java.util.List;
  */
 public interface UserService {
     public List<UserVo> selectUserInfo(String name);
+
+    public void inserAnswerInfo(UserAnswerVo vo);
+
+    public List<UserAnswerVo> selectAllAnswer();
 }

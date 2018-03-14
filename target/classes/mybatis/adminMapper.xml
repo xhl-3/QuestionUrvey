@@ -12,4 +12,13 @@
         select id, name, passwd from user where name = #{name}
     </select>
 
+    <insert id="insertAnserInfo" parameterType="java.util.Map">
+        INSERT INTO USER_ANSWER (user_name,phone_num,question_id,question_desc,answer,create_time )
+        VALUES (#{user_name},#{phone_num},#{question_id},#{question_desc},#{answer},CURRENT_TIMESTAMP )
+    </insert>
+
+    <select id="selectAllAnswer"  resultType="java.util.Map">
+        select * from USER_ANSWER
+    </select>
+
 </mapper>

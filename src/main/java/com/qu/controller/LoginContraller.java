@@ -27,7 +27,7 @@ public class LoginContraller {
 
         List<UserVo> list =userService.selectUserInfo(name);
         if(list.get(0).getPasswd().equals(passwd)){
-            return "statistics";
+            return "WEB-INF/pages/statistics";
         }else{
             return "login";
         }

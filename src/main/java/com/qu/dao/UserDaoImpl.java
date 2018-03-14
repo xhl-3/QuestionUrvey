@@ -1,5 +1,6 @@
 package com.qu.dao;
 
+import com.qu.vo.UserAnswerVo;
 import com.qu.vo.UserVo;
 
 import java.util.HashMap;
@@ -14,6 +15,14 @@ public class UserDaoImpl extends BaseDao implements UserDao{
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("name",name);
         return this.getSqlSession().selectList("com.qu.admin.selectUserByName",map);
+    }
+
+    public void insertAnserInfo(UserAnswerVo vo) {
+        this.getSqlSession().insert("com.qu.admin.insertAnserInfo",vo);
+    }
+
+    public List<UserAnswerVo> selectAllAnswer() {
+        return this.getSqlSession().selectList("com.qu.admin.selectAllAnswer");
     }
 
 }

@@ -2,6 +2,7 @@ package com.qu.service;
 
 import com.qu.dao.UserDao;
 import com.qu.dao.UserDaoImpl;
+import com.qu.vo.UserAnswerVo;
 import com.qu.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,13 @@ public class UserServiceImpl implements UserService{
 
     public List<UserVo> selectUserInfo(String name) {
         return userDao.selectUserInfo(name);
+    }
+
+    public void inserAnswerInfo(UserAnswerVo vo) {
+         userDao.insertAnserInfo(vo);
+    }
+
+    public List<UserAnswerVo> selectAllAnswer() {
+        return userDao.selectAllAnswer();
     }
 }

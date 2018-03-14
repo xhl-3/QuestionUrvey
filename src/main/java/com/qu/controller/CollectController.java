@@ -1,5 +1,8 @@
 package com.qu.controller;
 
+import com.qu.service.UserService;
+import com.qu.vo.UserAnswerVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +21,9 @@ import java.util.Map;
 @Controller
 public class CollectController {
 
+    @Autowired
+    private UserService userService;
+
     /**
      * 获取统计结果
      * @return
@@ -25,12 +31,8 @@ public class CollectController {
     @RequestMapping("/getData.do")
     @ResponseBody
     public Object getData(){
-        List<Map<String,Object>> list =new ArrayList<Map<String,Object>>();
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("allUser","12");
-        map.put("rightUser","6");
-        map.put("errorUser","6");
-        list.add(map);
+        List<UserAnswerVo> list =new ArrayList<UserAnswerVo>();
+        list=userService.selectAllAnswer();
         return list;
     }
 
@@ -39,10 +41,25 @@ public class CollectController {
      * @return
      */
     @RequestMapping("/saveAnswer.do")
-    @ResponseBody
-    public Object saveAnswer( @RequestParam("name") String name,@RequestParam("answer") String answer){
-        Map<String,Object> map = new HashMap<String,Object>();
-        map.put("success","success");
-        return map;
+    public String saveAnswer( String name,String phone,String money,String type){
+       String question1="问题1：每月花费多少元玩游戏？";
+       String question2="问题2：最近玩什么类型的游戏？";
+       UserAnswerVo vo1=new UserAnswerVo();
+       vo1.setName(name);
+       vo1.setPhone(phone);
+       vo1.setQuestion_id("1");
+       vo1.setQuestion_desc(question1);
+       vo1.setAnswer(money);
+       userService.inserAnswerInfo(vo1);
+
+       UserAnswerVo vo2=new UserAnswerVo();
+        vo2.setName(name);
+        vo2.setPhone(phone);
+        vo2.setQuestion_id("2");
+        vo2.setQuestion_desc(question2);
+        vo2.setAnswer(type);
+        userService.inserAnswerInfo(vo2);
+        Map<String,Object> map = new HashMap<String ,Object>();
+        return  "success";
     }
 }
