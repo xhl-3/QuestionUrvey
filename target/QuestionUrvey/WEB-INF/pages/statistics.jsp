@@ -15,6 +15,7 @@
 </head>
 <body>
 <div>
+    <button type="button" id="download" style="margin:20px;float: right;" id="btn_download" class="btn btn-primary" onClick ="$('#resultTable').tableExport({ type: 'excel', escape: 'false' })">数据导出</button>
     <div><table id="resultTable"></table></div>
 </div>
 </body>
@@ -37,15 +38,9 @@
             pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
             strictSearch: true,
             clickToSelect: true,                //是否启用点击选中行
-            showExport: true,                     //是否显示导出
             initExport:true,//仅初始化时注册一次导出按钮click事件  刷新时需设置为false
-            exportButton: $('#btn_export'),//为按钮btn_export  绑定导出事件
-            exportDataType: 'all',    //basic', 'all', 'selected'.
-            exportOptions:{
-                fileName: "文件名",
-                worksheetName: "sheetName",
-                firstRow:'<tr><td colspan=7>起止日期：'+$("#startDate").val()+'</td></tr>'//自定义首行信息
-            },
+            howExport: true,    //是否显示导出
+            xportDataType: "basic",            //basic', 'all', 'selected'.
             columns: [{
                 field: 'user_name',
                 title: '用户'
